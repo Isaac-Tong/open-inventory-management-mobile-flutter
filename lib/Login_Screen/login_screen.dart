@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'create_account.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -6,8 +7,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  String username = 'a';
-  String password = 'b';
+  String username;
+  String password;
   String testText = 'abcdefg';
   @override
   Widget build(BuildContext context) {
@@ -24,9 +25,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 TextField(
                   onChanged: (String value){
-                    username = value;
                     setState(() {
-                      testText = username;
+                      username = value;
                     });
                   },
                   decoration: InputDecoration(
@@ -38,6 +38,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 30
                 ),
                 TextField(
+                  onChanged: (String value){
+                    setState(() {
+                      password = value;
+                    });
+                  },
                   obscureText: true,
                   decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -54,6 +59,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                   child: Text(
                     'Login'
+                  ),
+                ),
+                FlatButton(
+                  color: Colors.brown,
+                  textColor: Colors.white,
+                  onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => CreateAccount()));
+                  },
+                  child: Text(
+                      'Create Account'
                   ),
                 ),
               ],
