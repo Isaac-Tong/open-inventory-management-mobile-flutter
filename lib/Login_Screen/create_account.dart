@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../Networking/authentication.dart';
 
 class CreateAccount extends StatefulWidget {
   @override
@@ -8,6 +9,7 @@ class CreateAccount extends StatefulWidget {
 class _CreateAccountState extends State<CreateAccount> {
   String username;
   String password;
+  String token = 'Token: ';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,10 +49,23 @@ class _CreateAccountState extends State<CreateAccount> {
                       border: OutlineInputBorder(), labelText: 'Password'),
                 ),
                 SizedBox(height: 30),
+                Card(
+                  child: ListTile(
+                    title: Text(
+                        token
+                    ),
+                  ),
+                ),
+                SizedBox(height: 30),
                 FlatButton(
                   color: Colors.red,
                   textColor: Colors.white,
-                  onPressed: () {},
+                  onPressed: () async {
+                    var res = await create_user(username, password);
+                    setState(() {
+                      token = res.body;
+                    });
+                  },
                   child: Text('Login'),
                 ),
               ],
