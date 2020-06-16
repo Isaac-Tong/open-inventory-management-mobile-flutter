@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:openinventorymanagement/Login_Screen/login_screen.dart';
-import 'inventory.dart';
+import 'App_Screens/inventory.dart';
 
 void main() {
   runApp(MyApp());

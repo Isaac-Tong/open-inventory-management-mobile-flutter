@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:openinventorymanagement/Test/qr_test.dart';
 import '../Networking/authentication.dart';
+import '../Shared_Preferences/store_token.dart';
+import '../App_Screens/inventory.dart';
+import '../Test/qr_test.dart';
 
 class CreateAccount extends StatefulWidget {
   @override
@@ -61,10 +65,27 @@ class _CreateAccountState extends State<CreateAccount> {
                   color: Colors.red,
                   textColor: Colors.white,
                   onPressed: () async {
-                    var res = await create_user(username, password);
-                    setState(() {
-                      token = res.body;
-                    });
+//                    try{
+//                      var res = await create_user(username, password);
+//                      //res.body has the token
+//                      //We now want to store the token returned by backend to shared preferences database
+//                      await storeToken(res.body);
+//
+//                      //Try to retrieve the token and display it to the token card
+//                      String storedToken = await retrieveToken();
+//
+//                      setState(() {
+//                        token = storedToken;
+//                      });
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => QRTEST()),
+                      );
+
+//                    }catch(error){
+//                      print('abc');
+//                    }
                   },
                   child: Text('Login'),
                 ),
