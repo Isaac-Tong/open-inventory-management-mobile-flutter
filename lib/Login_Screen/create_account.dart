@@ -65,27 +65,27 @@ class _CreateAccountState extends State<CreateAccount> {
                   color: Colors.red,
                   textColor: Colors.white,
                   onPressed: () async {
-//                    try{
-//                      var res = await create_user(username, password);
-//                      //res.body has the token
-//                      //We now want to store the token returned by backend to shared preferences database
-//                      await storeToken(res.body);
-//
-//                      //Try to retrieve the token and display it to the token card
-//                      String storedToken = await retrieveToken();
-//
-//                      setState(() {
-//                        token = storedToken;
-//                      });
+                    try{
+                      var res = await create_user(username, password);
+                      //res.body has the token
+                      //We now want to store the token returned by backend to shared preferences database
+                      await storeToken(res.body);
+
+                      //Try to retrieve the token and display it to the token card
+                      String storedToken = await retrieveToken();
+
+                      setState(() {
+                        token = storedToken;
+                      });
 
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => QRTEST()),
                       );
 
-//                    }catch(error){
-//                      print('abc');
-//                    }
+                    }catch(error){
+                      print('abc');
+                    }
                   },
                   child: Text('Login'),
                 ),
